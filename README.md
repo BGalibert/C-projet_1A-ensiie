@@ -1,8 +1,8 @@
 
 # Projet de Programmation Impérative, en C 
 
-Voici le projet de fin de 1er semestre à l'ensIIE, dans l'UE "Programamtion Impérative".  
-Le but de ce projet était d'implémnter en C un interpréteur capable de "lire" une image donnée en entrée et d'exécuter des actions selon les couleurs de ses pixels.  
+Voici mon projet de fin de 1er semestre à l'ensIIE, dans l'UE "Programamtion Impérative".  
+Le but de ce projet était d'implémenter en C un interpréteur capable de "lire" une image donnée en entrée et d'exécuter des actions selon les couleurs de ses pixels.  
 L'énoncé intégral dans le fichier enonce-projet-C.html .   
 
 > Note obtenue : **20/20** 
@@ -10,7 +10,7 @@ L'énoncé intégral dans le fichier enonce-projet-C.html .
 
 ## Contenu du dépôt
 
-Ce dépôt contient les fichiers tels que je les avais rendu à l'époque.   
+Ce dépôt contient les fichiers tels que je les avais rendus à l'époque.   
 En plus de ce README.md, vous trouverez donc :   
 1. l'énoncé du sujet du projet,
 2. le répertoire `src` contenant tous les fichiers `.c`,   
