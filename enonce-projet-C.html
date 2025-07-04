@@ -1,0 +1,481 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <link rel="stylesheet" type="text/css" href="enonce-projet-C_fichiers/empty.css">
+   <title>Projet PRIM11</title>
+</head>
+<body>
+<h1>
+Programmation impérative, projet 2023
+</h1>
+<h3>Dates et principe</h3>
+Cette page peut être mise à jour, avec informations complémentaires,
+précisions, <em><a href="https://web4.ensiie.fr/~guillaume.burel/cours/PRIM11/projet_2023.html#bonus">questions
+	bonus</a></em>, etc. Pensez à y revenir souvent.<br>
+<hr>
+<p><b>Ajout du 13 décembre</b> : schéma montrant comment aller au bloc suivant.<br>
+</p><p><b>Ajout du 15 décembre</b> : description de résultats attendus
+pour les programmes fournis en exemple (fichier README.md dans l'archive)<br>
+</p><p><b>Correction du 3 janvier</b> : nom des actions out(nombre) et
+  out(char) dans la description des actions<br>
+
+  </p><p>
+Projet à rendre pour le <b>8/1/2024</b> à <b>23h59</b>, aucun retard ne sera toléré.<br>
+Des soutenances pourront potentiellement être organisées ensuite.<br><br>
+<br><br>  
+<b>Lire tout le sujet.</b><br><br>
+
+Un rendu de projet comprend :
+</p><ul>
+<li> Un rapport typographié précisant vos choix, les problèmes
+  techniques qui se posent et les solutions trouvées ; il présente en
+  introduction le contexte et le sujet du projet, et il précise en
+  conclusion les limites de votre programme. Le rapport sera de
+  préférence composé avec <span style="font-family:serif;margin-right:-.7em">L<span style="font-size:0.9em;position:relative;top:-.1em;left:-0.4em;">A</span><span style="position:relative;left:-.5em;">T</span><span style="position:relative;top:.2em;left:-.6em;">E</span><span style="position:relative;left:-.7em;">X</span></span>. Le soin apporté à la grammaire et à
+  l'orthographe est largement pris en compte.</li>
+<li> Un code <em>abondamment</em> commenté ; la première partie des
+  commentaires comportera systématiquement les lignes :<br>
+<ol>
+<li><tt>@ requires </tt> décrivant les préconditions : c'est-à-dire
+conditions sur les paramètres pour une bonne utilisation (<b>pas de
+  typage ici</b>),</li>
+<li><tt>@ assigns </tt> listant les zones de mémoire modifiées,</li>
+<li><tt>@ ensures </tt>  décrivant la propriété vraie à la sortie de la
+fonction lorsque les préconditions sont respectées, le cas échéant
+avec mention des comportements en cas de succès et en cas d'échec,</li>
+</ol>
+En outre chaque boucle <tt>while</tt> doit contenir un commentaire
+précisant la raison de sa terminaison (le cas échéant). De même en
+cas d'appels récursifs.<br>  On pourra
+préciser des informations additionnelles si des techniques
+particulières méritent d'être mentionnées.
+<br><br>
+Le code doit enfin compiler sans erreur (évidemment) et sans warning lorsque
+l'option <tt>-Wall</tt> est utilisée.
+
+<b>Un code qui ne compile pas
+se verra attribuer la note de 0.</b><p></p></li>
+<li>Un manuel d'utilisation de votre exécutable, même minimal, est toujours bienvenu.</li>
+</ul>
+Avez-vous lu tout le sujet ?
+
+<hr>
+<h4>Protocole de dépôt</h4>
+<p>
+  Vous devez rendre 
+  </p><ul> 
+    <li> votre rapport (en pdf) et</li> 
+    <li> vos fichiers de code</li>
+  </ul>
+  rassemblés dans une archive tar gzippée identifiée
+  comme <em>votre_prénom_votre_nom</em><tt>.tgz</tt>.<br>  La commande
+  devrait ressembler à :<br>
+  <tt>tar zcvf randolph_carter.tgz rapport.pdf fichiers.c
+    autres_trucs_éventuels.c</tt>…<br>
+  <b>N'OUBLIEZ surtout PAS de mettre le nom identifiant l'archive</b>
+  (donc nouveau) <b>en PREMIER.</b><br>
+  <b>Lisez le man !</b> et testez le contenu de votre archive (une
+  commande comme par exemple&nbsp;:<br> <tt>tar tvf
+  randolph_carter.tgz</tt> doit lister les fichiers et donner leur
+  taille).
+  <ul>
+    <li><b>Une archive qui ne contient pas les fichiers demandés ne
+	sera pas excusable.</b></li>
+    <li><b>**Une archive qui n'est pas au format demandé</b> (archive
+    tar gzippée avec suffixe .tgz) <b>ne sera
+	pas corrigée**</b> donc c'est 0/20.</li>
+  </ul>
+<p></p>
+<p>
+  <!-- <em>La procédure pour déposer votre dossier vous sera communiquée -->
+  <!-- ultérieurement.</em> -->
+</p><p>Toute tentative de fraude (plagiat, etc.) sera sanctionnée. Si
+  plusieurs projets ont <b>des sources trop similaires</b> (y compris
+  sur une partie du code uniquement), <em>tous</em> leurs auteurs se
+  verront attribuer la note 0/20. En particulier, il faudra prendre
+  soin de ne pas publier son travail sur un dépôt public (en tout cas
+  pas avant la date de fin de rendu). On évitera également de demander
+  (ou de donner) des conseils trop précis à ses camarades (y compris
+  des promotions précédentes), ces conseils ayant pu être donnés à
+  plusieurs personnes. Les rendus seront comparés deux à deux.
+
+</p>
+<p>
+<b>Procédure de dépôt</b><br> Vous devez enregistrer
+votre archive tgz dans le dépôt dédié au cours PRIM11 (prim11-2023) en vous
+connectant à <a href="http://exam.ensiie.fr/">http://exam.ensiie.fr</a>. Ce dépôt sera ouvert
+jusqu'au 8 janvier inclus.
+</p>
+
+<hr>
+
+<h3>Contexte</h3>
+<p>Le but de ce projet est d'implémenter un interpréteur pour un
+  langage de programmation dont les programmes sont des images.
+</p>
+
+<p>Cornelis est un langage de programmation fortement inspiré du
+  langage <a href="https://www.dangermouse.net/esoteric/piet.html">Piet</a>,
+  qui se définit comme un langage dont les programmes ressemblent à
+  des tableaux d'art abstrait. (Cornelis est le second prénom de
+  Pieter Mondriaan, plus connu sous son nom d'artiste Piet Mondrian.)
+  En Cornelis comme en Piet, les programmes sont donnés sous la forme
+  d'image en deux dimensions. Le contenu de l'image est parcouru, ce
+  qui entraîne un certain nombre d'actions.
+
+  </p><h4>Géométrie de l'image</h4>
+  <p>L'image est constituée d'une grille de pixels de composantes
+  rouge/verte/bleue. Chaque pixel a un voisin à gauche, à droite, en
+  haut et en bas. En particulier, l'image doit être considérée comme
+  un tore&nbsp;: le voisin d'un pixel située sur la ligne tout en haut
+  est le pixel de la même colonne situé tout en bas, et réciproquement&nbsp;;
+  de même, le voisin d'un pixel située sur la colonne tout à droite
+  est le pixel de la même ligne situé tout à gauche, et
+    réciproquement.
+    
+  </p><h4>Couleurs</h4>
+ <p> En Cornelis, il y a 18 couleurs codantes, que l'on peut donner par
+  leur <a href="https://fr.wikipedia.org/wiki/Couleur_du_Web">code HTML</a> :
+
+</p><table border="1" cellpadding="3" cellspacing="0">
+	<tbody><tr>
+		<td bgcolor="#FF8080" align="center">#FF8080<br>rouge clair</td>
+		<td bgcolor="#FFFF80" align="center">#FFFF80<br>jaune clair</td>
+		<td bgcolor="#80FF80" align="center">#80FF80<br>vert clair</td>
+		<td bgcolor="#80FFFF" align="center">#80FFFF<br>cyan clair</td>
+		<td bgcolor="#8080FF" align="center">#8080FF<br>bleu clair</td>
+		<td bgcolor="#FF80FF" align="center">#FF80FF<br>magenta clair</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FF0000" align="center">#FF0000<br>rouge</td>
+		<td bgcolor="#FFFF00" align="center">#FFFF00<br>jaune</td>
+		<td bgcolor="#00FF00" align="center">#00FF00<br>vert</td>
+		<td bgcolor="#00FFFF" align="center">#00FFFF<br>cyan</td>
+		<td bgcolor="#0000FF" align="center">#0000FF<br>bleu</td>
+		<td bgcolor="#FF00FF" align="center">#FF00FF<br>magenta</td>
+	</tr>
+	<tr>
+		<td bgcolor="#800000" align="center">#800000<br>rouge foncé</td>
+		<td bgcolor="#808000" align="center">#808000<br>jaune foncé</td>
+		<td bgcolor="#008000" align="center">#008000<br>vert foncé</td>
+		<td bgcolor="#008080" align="center">#008080<br>cyan foncé</td>
+		<td bgcolor="#000080" align="center">#000080<br>bleu foncé</td>
+		<td bgcolor="#800080" align="center">#800080<br>magenta foncé</td>
+	</tr>
+</tbody></table>
+<p>
+  Les autres couleurs seront réparties en deux catégories en fonction de
+leur luminance : celles dont la luminance est strictement inférieure à
+128 seront bloquantes, les autres seront passantes.
+
+La luminance sera calculée à l'aide de la formule :
+<em> 0.202 × rouge + 0.707 × vert + 0.071 × bleu</em>.
+
+</p><h4>Blocs</h4>
+<p>On ne considérera pas les pixels individuellement mais pas regroupés
+par blocs de même couleur. Un bloc est un ensemble de pixels contigus
+de même couleur,
+délimités par des pixels d'une autre couleur. Attention, comme l'image
+est un tore, les blocs peuvent déborder des limites de l'image et
+continuer de l'autre côté.
+
+</p><p>Pour faire un traitement sur un bloc (par exemple pour calculer sa
+  taille ou pour trouver son pixel le plus en haut à gauche), on
+  pourra utiliser un algorithme de type remplissage, avec un tableau
+  supplémentaire, initialement rempli de zéros, qui indiquera les
+  pixels déjà traités et limitera les appels récursifs :
+</p><pre>traitement(i : image, init : couleur, x : colonne, y : ligne, traité : tableau)
+  traité[x,y] := 1
+  si init = i[x, y]
+    ... traitement du pixel en x, y ...
+    pour chacun des quatre voisins vx, vy de x,y
+      si non traité[vx,vy]
+        traitement(i, init, vx, vy, traité)
+</pre>
+
+<h4>État de l'interpréteur</h4>
+<p>
+  L'interpréteur du code comportera
+  </p><ul>
+    <li> les coordonnées du pixel courant&nbsp;;
+    </li><li> la direction actuelle parmi est, sud, ouest et nord&nbsp;;
+    </li><li> le bord actuel parmi bâbord (gauche) et tribord (droite)&nbsp;;
+    </li><li> un pile d'entier.
+  </li></ul>
+
+  Les coordonnées initiales seront celles du pixel en haut à gauche.
+La direction initiale sera vers l'est. Le bord initial sera bâbord. La
+  pile sera initialement vide.
+
+  <h4>Exécution du programme</h4>
+Un pas du programme consiste à chercher le prochain bloc vers lequel
+  aller. Pour cela, on considère la frontière du bloc courant qui est
+  la plus loin dans la direction actuelle (par exemple, la plus à
+  droite si la direction est vers l'est). Ensuite, sur cette
+  frontière, on considère le pixel le plus du bord actuel (par
+  exemple, le plus en haut si la direction est vers l'est et le bord
+  bâbord). Le pixel recherché est résumé dans le tableau suivant :
+<table border="1" cellpadding="3" cellspacing="0">
+	<tbody><tr>
+		<th>direction</th><th>bord</th><th>pixel retenu</th>
+	</tr>
+	<tr>
+		<td rowspan="2">est</td><td>bâbord</td><td>frontière
+		droite, le plus haut</td>
+	</tr>
+	<tr>
+		<td>tribord</td><td>frontière droite, le plus bas</td>
+	</tr>
+	<tr>
+		<td rowspan="2">sud</td><td>bâbord</td><td>frontière
+		basse, le plus à droite</td>
+	</tr>
+	<tr>
+		<td>tribord</td><td>frontière basse, le plus à gauche</td>
+	</tr>
+	<tr>
+		<td rowspan="2">ouest</td><td>bâbord</td><td>frontière
+		gauche, le plus bas</td>
+	</tr>
+	<tr>
+		<td>tribord</td><td>frontière gauche, le plus haut</td>
+	</tr>
+	<tr>
+		<td rowspan="2">nord</td><td>bâbord</td><td>frontière
+		haute, le plus à gauche</td>
+	</tr>
+	<tr>
+		<td>tribord</td><td>frontière haute, le plus à droite</td>
+	</tr>
+</tbody></table>
+
+<p>
+  Attention, puisque l'image est un tore, la limite de l'image n'est
+  pas forcément une frontière pour le bloc car il peut continuer de
+  l'autre côté s'il s'agit de la même couleur.
+</p><p>Si jamais un bloc n'a pas de frontière dans la direction donnée
+  (parce que c'est un bandeau tout le long de l'image), alors le
+  comportement est indéfini.
+  
+</p><p>Une fois sur ce pixel, on se déplace à nouveau dans le sens de la
+  direction.
+  </p><ul><li>Si le nouveau pixel est une couleur codante, il indique le
+      nouveau bloc.
+      </li><li>Si c'est une couleur bloquante, on inverse le bord et on
+      recommence depuis l'ancien bloc. Si on tombe à nouveau sur une
+      couleur bloquante, on tourne la direction dans le sens des
+      aiguilles d'une montre, et on recommence depuis l'ancien
+      bloc. On continue comme ceci en modifiant le bord et la
+      direction de façon alternée. Si après 8 tentatives on n'a obtenu
+      que des couleurs bloquantes, le programme s'arrête.
+    </li><li>Si le nouveau pixel a une couleur passante, alors on continue
+    dans la direction jusqu'à atteindre une couleur non passante. Si
+    c'est une couleur codante, c'est le nouveau bloc. Si c'est une
+    couleur bloquante, alors on procède comme indiqué ci-dessus, mais
+    en repartant du premier pixel passant et non de l'ancien bloc. Le
+    fait d'être passé par une couleur passante remet à zéro les
+      tentatives par rapport à l'arrêt du programme.
+      </li></ul>
+
+<p>  Exemple (on est dans le bloc rouge entouré de pointillés)&nbsp;:
+
+</p><p>
+</p><table><tbody><tr><td><img src="enonce-projet-C_fichiers/cornelis.svg" style="display: inline;"></td><td>
+<table border="1" cellpadding="3" cellspacing="0">
+	<tbody><tr>
+		<th>direction</th><th>bord</th><th>pixel
+		retenu</th><th>bloc suivant</th><th>action (cf. infra)</th>
+	</tr>
+	<tr>
+		<td rowspan="2">est</td><td>bâbord</td><td>a</td><td>magenta (a')</td><td>in(char)</td>
+	</tr>
+	<tr>
+		<td>tribord</td><td>b</td><td>jaune (b')</td><td>rien</td>
+	</tr>
+	<tr>
+		<td rowspan="2">sud</td><td>bâbord</td><td>c</td><td>bleu (c')</td><td>duplique</td>
+	</tr>
+	<tr>
+		<td>tribord</td><td>d</td><td>bleu (d')</td><td>rien</td>
+	</tr>
+	<tr>
+		<td rowspan="2">ouest</td><td>bâbord</td><td>e</td><td>bleu
+		(e')</td><td>duplique</td>
+	</tr>
+	<tr>
+		<td>tribord</td><td>d</td><td>bleu
+		clair (d")</td><td>in(nombre)</td>
+	</tr>
+	<tr>
+		<td rowspan="2">nord</td><td>bâbord</td><td>f</td><td>bleu
+		(f')</td><td>duplique</td>
+	</tr>
+	<tr>
+		<td>tribord</td><td>g</td><td>cyan foncé (g')</td><td>direction</td>
+	</tr>
+</tbody></table></td></tr></tbody></table>
+  <h4>Actions</h4>
+<p>
+  À chacun des pas, on va potentiellement agir sur la pile.
+  L'action à effectuer dépend des
+  différences de couleurs entre le bloc d'origine et celui où on est
+  arrivé. 
+  </p><p> Si on est passé par des pixels de couleur passante, alors on ne
+    fait rien, quelle que soit la couleur des blocs d'origine et de destination.
+  </p><p>Sinon, on va considérer la différence entre les couleurs dans le
+  cycle rouge -&gt; jaune -&gt; vert -&gt; cyan -&gt; bleu -&gt; magenta -&gt; rouge et
+  la différence de luminosité dans le cycle clair -&gt; normal -&gt; foncé
+    -&gt; clair.
+
+    </p><table border="1" cellpadding="3" cellspacing="0">
+	<tbody><tr>
+		<th>&nbsp;</th><th colspan="3">Différence de luminosité</th>
+	</tr>
+	<tr>
+		<th>Différence de couleur</th><th>Aucune</th><th>1 plus
+		foncé</th><th>2 plus foncé</th>
+	</tr>
+	<tr>
+		<th>Aucune</th><td>&nbsp;</td><td>empile</td><td>dépile</td>
+	</tr>
+	<tr>
+		<th>1 cran</th><td>plus</td><td>moins</td><td>fois</td>
+	</tr>
+	<tr>
+		<th>2 crans</th><td>divise</td><td>reste</td><td>non</td>
+	</tr>
+	<tr>
+		<th>3 crans</th><td>plus grand</td><td>direction</td><td>bord</td>
+	</tr>
+	<tr>
+		<th>4 crans</th><td>duplique</td><td>tourne</td><td>in(nombre)</td>
+	</tr>
+	<tr>
+		<th>5 crans</th><td>in(char)</td><td>out(nombre)</td><td>out(char)</td>
+	</tr>
+    </tbody></table>
+
+<p>    Attention, clair est donc considéré comme une fois plus foncé que foncé.
+
+</p><dl>
+  <dt>empile</dt><dd>on ajoute sur la pile la taille de l'ancien
+    bloc</dd>
+  <dt>dépile</dt><dd>on supprime un élément de la pile (on ne fait
+  rien avec)</dd>
+  <dt>plus</dt><dd>on dépile deux éléments et on empile leur somme</dd>
+  <dt>moins</dt><dd>on dépile deux éléments et on empile la
+  différence entre le second et le premier</dd>
+  <dt>fois</dt><dd>on dépile deux éléments et on empile leur produit</dd>
+  <dt>divise</dt><dd>on dépile deux éléments et on empile le quotient
+  du second par le premier</dd>
+  <dt>reste</dt><dd>on dépile deux éléments et on empile le reste de
+  la division entière du second par le premier</dd>
+  <dt>non</dt><dd>on dépile un élément et on empile 1 si l'élément
+  vaut 0 et 0 sinon</dd>
+  <dt>plus grand</dt><dd>on dépile deux éléments et on empile 1 si le
+    second est plus grand que le premier, 0 sinon</dd>
+  <dt>direction</dt><dd>on dépile un élément et on fait tourner ce nombre
+  de fois la
+  direction dans le sens des aiguilles d'une montre</dd>
+  <dt>bord</dt><dd>on dépile un élément et on inverse ce nombre
+  de fois le bord</dd>
+  <dt>duplique</dt><dd>on dépile un élément et on le rempile deux fois</dd>
+  <dt>tourne</dt><dd>on dépile deux éléments et on va faire "tourner"
+  la pile jusqu'à la profondeur donnée par le second,
+  autant de fois que le premier élément. Faire tourner la pile une
+  fois jusqu'à la profondeur <em>d</em> consiste à enlever l'élément
+  au sommet de la pile et à le remettre à la profondeur <em>d</em> en
+  faisant remonter les autres.
+
+Par exemple, en partant de la pile 
+<pre>2 5 1 2 3 4 5 6 7
+</pre>
+(le sommet est à gauche), on va tourner deux fois à la profondeur cinq
+le reste de la pile, ce qui donnera la pile
+<pre>3 4 5 1 2 6 7
+</pre>
+
+</dd>
+  <dt>in(nombre)</dt><dd>on lit un entier sur l'entrée standard et on l'empile</dd>
+  <dt>in(char)</dt><dd>on lit un caractère sur l'entrée standard et on
+  empile son code ASCII</dd>
+  <dt>out(nombre)</dt><dd>on dépile un élément et on l'affiche sur la
+  sortie standard</dd>
+  <dt>out(char)</dt><dd>on dépile un élément et on affiche sur la
+  sortie standard le caractère possédant ce code ASCII</dd>
+    </dl>
+
+Si jamais il n'y a pas assez d'éléments dans la pile pour effectuer
+l'action demandée, on ne fait rien et on laisse la pile comme elle
+était avant le changement de bloc. On
+fera en particulier attention au cas de tourne.
+  
+  <h3>Interface</h3>
+<p>L'exécutable final prendra en premier argument le nom d'un fichier au
+  format <a href="https://fr.wikipedia.org/wiki/Portable_pixmap">PPM</a>
+  qui contiendra l'image contenant le code. Les entrées et sorties se
+  feront sur l'entrée et la sortie standard.
+</p>
+
+<p>Si le programme final s'appelle <code>prog</code>, et qu'on a un
+  fichier d'entrée nommé <code>test.ppm</code>, il devrait être
+  possible d'entrer la commande
+</p><pre>./prog test.ppm
+</pre>
+pour interpréter le code contenu dans <code>test.ppm</code>.
+<p></p>
+
+
+<h3>Exemples</h3>
+
+On trouvera dans le
+fichier <a href="https://web4.ensiie.fr/~guillaume.burel/cours/PRIM11/cornelis.tgz">cornelis.tgz</a> un
+certains nombres de fichiers d'entrées
+(<em>exemple</em><code>.ppm</code>).
+
+<p>D'autres exemples seront possiblement proposés d'ici la date de rendu.
+</p>
+
+<p>Lors de la correction, votre programme sera testé avec des exemples
+  qui n'auront pas été fournis à l'avance&nbsp;; faire passer les
+  exemples ne suffira donc pas, il faudra bien respecter la
+  spécification.</p>
+<h3><a id="bonus">Bonus</a></h3>
+<ul>
+  <li>Faire un environnement de débogage qui permet de suivre
+  l'exécution du code, ajouter des points d'arrêt, etc.
+  </li><li>Permettre de lire d'autres formats d'image que PPM
+  (potentiellement en utilisant une bibliothèque).
+</li></ul>
+
+<h3>Conseils</h3> <p>Pour la récupération d'une entrée de l'utilisateur,
+plutôt que faire un <tt>scanf</tt> directement, il vaut parfois mieux
+récupérer une ligne en entier avec <tt>fgets</tt> puis
+utiliser <tt>sscanf</tt> dessus&nbsp;; on peut utiliser la suite de
+commandes suivantes&nbsp;:
+</p><pre>char buf[256];
+ .
+ .
+ .
+fgets(buf, 256, stdin);
+sscanf(buf, "format", ...);
+</pre>
+<p></p>
+<p>Pour lire un seul caractère, on pourra
+  utiliser <code>getc</code>, qui renvoie <code>EOF</code> en cas
+  d'erreur ou en fin de fichier.</p>
+<p>Il pourra être opportun d'utiliser certaines fonctions de la
+  bibliothèque standard comme <code>memcpy</code>
+  ou <code>memset</code>. Se reporter aux pages de manuel pour leur
+  fonctionnement.</p>
+<p>Vous devez avoir lu jusqu'ici avant de commencer.</p>
+
+
+
+
+
+
+
+
+
+</body></html>
