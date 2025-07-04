@@ -3,7 +3,8 @@
 
 Voici mon projet de fin de 1er semestre à l'ensIIE, dans l'UE "Programamtion Impérative".  
 Le but de ce projet était d'implémenter en C un interpréteur capable de "lire" une image donnée en entrée et d'exécuter des actions selon les couleurs de ses pixels.  
-L'énoncé intégral dans le fichier enonce-projet-C.html .   
+L'énoncé intégral est disponible à [cette adresse](https://web4.ensiie.fr/~guillaume.burel/cours/PRIM11/projet_2023.html),  
+mais le code source de la page web est égaleùent dans le fichier enonce-projet-C.html .   
 
 > Note obtenue : **20/20** 
 
